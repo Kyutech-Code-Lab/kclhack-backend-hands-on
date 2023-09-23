@@ -69,7 +69,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         try {
           const posts = await prisma.posts.findMany({
             orderBy: {
-              id: 'asc', // idの昇順で取得
+              id: 'desc', // idの降順で取得
             }
           })
           // 取得に成功した場合，取得した投稿を返す
