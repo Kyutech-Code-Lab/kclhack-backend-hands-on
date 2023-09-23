@@ -21,3 +21,8 @@
 ## Prisma Studioについて
 - `npx prisma studio`を実行し`http://localhost:5555/`にアクセスすると，Prisma Studioというツールが使用できる．
 - このツールは接続しているデータベースの中身の確認や編集ができる．かなり直感的に使えると思うのでAPIが実装できているかの確認に使用すると良い．
+
+## Postmanについて
+- Postmanというツールを使うと，バックエンドへのリクエストを簡単に送信することができる．デバッグに用いると便利．
+- ダウンロード: https://www.postman.com/downloads/
+- 使い方: https://zenn.dev/nameless_sn/articles/postman_tutorial
