@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
 import styles from '@/styles/Home.module.css'
-import PostForm from '@/components/PostFormSample';
-import PostItem from '@/components/PostItemSample';
+import PostFormSample from '@/components/PostFormSample'
+import PostItemSample from '@/components/PostItemSample';
 
 type Post = {
   id: number,
@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/posts');
+        const response = await fetch('/api/sample/posts');
         const data = await response.json();
         setPosts(data);
       } catch (error) {
@@ -35,12 +35,12 @@ export default function Home() {
       </Head>
       <div className={styles.main}>
         <div className={styles.container}>
-          <h1>KCLHack Hands-On</h1>
-          <a href='/sample'>サンプルページへ移動</a>
-          <PostForm />
+          <h1>KCLHack Hands-On (Sample)</h1>
+          <a href='/'>戻る</a>
+          <PostFormSample />
           <div>
             {posts.map((post) => (
-              <PostItem key={post.id} post={post} />
+              <PostItemSample key={post.id} post={post} />
             ))}
           </div>
         </div>
