@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
 import styles from '@/styles/Home.module.css'
-import PostForm from '@/components/PostFormSample';
-import PostItem from '@/components/PostItemSample';
+import PostForm from '@/components/PostForm';
+import PostItem from '@/components/PostItem';
 
 type Post = {
   id: number,

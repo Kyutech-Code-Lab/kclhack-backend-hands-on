@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from '@/styles/Home.module.css'
 
-export default function PostForm() {
+export default function PostFormSample() {
 
   const [content, setContent] = useState<string>('')
 

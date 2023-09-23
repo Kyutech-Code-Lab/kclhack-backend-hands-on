@@ -9,7 +9,7 @@ type PostItemProps = {
   };
 };
 
-const PostItem = ({ post }: PostItemProps) => {
+export default function PostItem({ post }: PostItemProps) {
 
   const [isEditting, setIsEditting] = useState<boolean>(false);
   const [editedContent, setEditedContent] = useState<string>(post.content);
@@ -85,5 +85,3 @@ const PostItem = ({ post }: PostItemProps) => {
   )
 
 };
-
-export default PostItem;
