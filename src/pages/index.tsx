@@ -15,16 +15,21 @@ export default function Home() {
   const [posts, setPosts] = useState<Post[]>([]);
   
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchPostData = async () => {
       try {
         const response = await fetch('/api/posts');
         const data = await response.json();
-        setPosts(data);
+        if (response.ok) {
+          setPosts(data);
+          console.log('データの取得に成功しました！');
+        } else {
+          console.error(response.statusText, data.message);
+        }
       } catch (error) {
-        console.error('データの取得に失敗しました', error);
+        console.error(error);
       }
     };
-    fetchData();
+    fetchPostData();
   }, []);
 
   return (

@@ -20,13 +20,14 @@ export default function PostFormSample() {
         },
         body: JSON.stringify({ content }),
       });
+      const data = await response.json();
       if (response.ok) {
         // POSTが成功した場合の処理
         setContent('')
         console.log('投稿に成功しました！')
       } else {
         // POSTが失敗した場合の処理
-        console.error(response.statusText)
+        console.error(response.statusText, data.message);
       }
     } catch (error) {
       // エラーハンドリング

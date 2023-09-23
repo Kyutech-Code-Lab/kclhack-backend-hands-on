@@ -32,13 +32,14 @@ export default function PostItemSample({ post }: PostItemProps) {
           content: editedContent,
         }),
       });
+      const data = await response.json();
       if (response.ok) {
         // POSTが成功した場合の処理
         setIsEditting(false);
         console.log('更新に成功しました！')
       } else {
         // POSTが失敗した場合の処理
-        console.error(response.statusText)
+        console.error(response.statusText, data.message)
       }
     } catch (error) {
       // エラーハンドリング
@@ -52,12 +53,13 @@ export default function PostItemSample({ post }: PostItemProps) {
       const response = await fetch(`/api/sample/posts?id=${post.id}`, {
         method: 'DELETE',
       });
+      const data = await response.json();
       if (response.ok) {
         // 削除が成功した場合の処理
         console.log('削除に成功しました！');
       } else {
         // 削除が失敗した場合の処理
-        console.error(response.statusText);
+        console.error(response.statusText, data.message);
       }
     } catch (error) {
       // エラーハンドリング
