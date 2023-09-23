@@ -67,7 +67,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       } else {
         // idが指定されていない場合，全ての投稿をデータベースから取得
         try {
-          const posts = await prisma.posts.findMany()
+          const posts = await prisma.posts.findMany({
+            orderBy: {
+              id: 'asc', // idの昇順で取得
+            }
+          })
           // 取得に成功した場合，取得した投稿を返す
           res.status(200).json(posts)
           break
