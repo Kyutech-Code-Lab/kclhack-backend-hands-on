@@ -10,7 +10,7 @@ type Post = {
   created_at: Date,
 }
 
-export default function Home() {
+export default function Sample() {
 
   const [posts, setPosts] = useState<Post[]>([]);
   
