@@ -15,6 +15,11 @@ export default function PostItem({ post }: PostItemProps) {
   const [editedContent, setEditedContent] = useState<string>(post.content);
 
   const updatePost = async () => {
+    // 入力が空の場合は知らせる
+    if (editedContent === '') {
+      alert('テキストが空です')
+      return
+    }
     try {
       // PUTリクエストを送信
       const response = await fetch('/api/posts', {

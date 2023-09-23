@@ -6,6 +6,11 @@ export default function PostFormSample() {
   const [content, setContent] = useState<string>('')
 
   const submitPost = async () => {
+    // 入力が空の場合は知らせる
+    if (content === '') {
+      alert('テキストが空です')
+      return
+    }
     try {
       // POSTリクエストを送信
       const response = await fetch('/api/sample/posts', {
@@ -15,7 +20,6 @@ export default function PostFormSample() {
         },
         body: JSON.stringify({ content }),
       });
-
       if (response.ok) {
         // POSTが成功した場合の処理
         setContent('')
