@@ -14,12 +14,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const newContent = await req.body.content
       // contentが存在しない場合，BadRequestを返す
       if (newContent == null) {
-        res.status(400).end()
+        res.status(400).json({ message: 'content is required' })
         break
       }
       // contentが空文字列の場合，BadRequestを返す
       if (newContent === '') {
-        res.status(400).end()
+        res.status(400).json({ message: 'content is empty' })
         break
       }
       // データベースに新しい投稿を作成
@@ -32,9 +32,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // 作成に成功した場合，作成した投稿を返す
         res.status(200).json(newPost)
         break
-      } catch {
+      } catch(error) {
         // データベースの接続エラーなどで作成できなかった場合，InternalServerErrorを返す
-        res.status(500).end()
+        res.status(500).json({ message: error })
         break
       }
 
@@ -53,15 +53,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           })
           // そのidの投稿が存在しない場合，NotFoundを返す
           if (post == null) {
-            res.status(404).end()
+            res.status(404).json({ message: 'post not found' })
             break
           }
           // 取得に成功した場合，取得した投稿を返す
           res.status(200).json(post)
           break
-        } catch {
+        } catch(error) {
           // データベースの接続エラーなどで取得できなかった場合，InternalServerErrorを返す
-          res.status(500).end()
+          res.status(500).json({ message: error })
           break
         }
       } else {
@@ -75,9 +75,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           // 取得に成功した場合，取得した投稿を返す
           res.status(200).json(posts)
           break
-        } catch {
+        } catch(error) {
           // データベースの接続エラーなどで取得できなかった場合，InternalServerErrorを返す
-          res.status(500).end()
+          res.status(500).json({ message: error })
           break
         }
       }
@@ -89,12 +89,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const updateContent = req.body.content
       // idまたはcontentが存在しない場合，BadRequestを返す
       if (updateId == null || updateContent == null) {
-        res.status(400).end()
+        res.status(400).json({ message: 'id and content are required' })
         break
       }
       // contentが空文字列の場合，BadRequestを返す
       if (updateContent === '') {
-        res.status(400).end()
+        res.status(400).json({ message: 'content is empty' })
         break
       }
       // データベース内の投稿データを更新
@@ -110,9 +110,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // 更新に成功した場合，更新後の投稿を返す
         res.status(200).json(updatedPost)
         break
-      } catch {
+      } catch(error) {
         // データベースの接続エラーなどで更新できなかった場合，InternalServerErrorを返す
-        res.status(500).end()
+        res.status(500).json({ message: error })
         break
       }
     
@@ -122,7 +122,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const deleteId = req.query.id
       // idが存在しない場合，BadRequestを返す
       if (deleteId == null) {
-        res.status(400).end()
+        res.status(400).json({ message: 'id is required' })
         break
       }
       // データベース内の投稿データを削除
@@ -134,21 +134,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         })
         // そのidの投稿が存在しない場合，NotFoundを返す
         if (deletedPost == null) {
-          res.status(404).end()
+          res.status(404).json({ message: 'post not found' })
           break
         }        
         // 削除に成功した場合，削除した投稿を返す
         res.status(200).json(deletedPost)
         break
-      } catch {
+      } catch(error) {
         // データベースの接続エラーなどで削除できなかった場合，InternalServerErrorを返す
-        res.status(500).end()
+        res.status(500).json({ message: error })
         break
       }
 
     // 意図しないメソッドの場合，MethodNotAllowedを返す
     default:
-      res.status(405).end()
+      res.status(405).json({ message: 'supported methods are POST, GET, PUT and DELETE' })
       break
   
   }
