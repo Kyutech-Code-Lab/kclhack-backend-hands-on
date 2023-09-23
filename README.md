@@ -1,38 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# KCLHack バックエンド ハンズオン教材
+## 事前準備
+1. Dockerをインストール
+2. `git clone https://github.com/claustra01/kclhack-next-server-hands-on`を実行し，レポジトリをクローン
+3. `cd kclhack-next-server-hands-on`を実行し，クローンしてきたディレクトリに移動
+4. `.env.sample`という名前のファイルをコピーし，`.env`という名前に変更
+5. `docker compose up -d`を実行し，データベースを起動
+`compose.yml`という名前のファイルの中でデータベースを定義している（これをコピペすれば他の環境でもDockerでデータベースを起動することができる）
+6. `npm install`で必要なライブラリを導入
+今回はデータベースを扱うためPrismaというパッケージを導入している．他の環境では`npm install prisma`を実行する必要がある．
+7. `npx prisma migrate dev`で`prisma/schema.prisma`の内容をデータベースに反映
+`? Enter a name for the new migration: ›`と聞かれるが，何も入力せずにEnterキーを押してOK．
+`prisma/schema.prisma`の内容を書き換えた後もう一度実行すると，その変更がデータベースに反映される．
+8. `npm run dev`を実行し，アプリケーションを起動
+9. `http://localhost:3000/`にアクセスし，起動していることを確認
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Prisma Studioについて
+`npx prisma studio`を実行し`http://localhost:5555/`にアクセスすると，Prisma Studioというツールが使用できる．
+このツールは接続しているデータベースの中身の確認や編集ができる．かなり直感的に使えると思うのでAPIが実装できているかの確認に使用すると良い．
