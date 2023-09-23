@@ -16,7 +16,7 @@
 - `prisma/schema.prisma`の内容を書き換えた後もう一度実行すると，その変更がデータベースに反映される．
 8. `npm run dev`を実行し，アプリケーションを起動
 9. `http://localhost:3000/`にアクセスし，起動できることを確認
-10. `http://localhost:3000/sample`にサンプルがあるので，自由に触ってみる
+10. `http://localhost:3000/sample`にサンプルがあるので，自由に触ってみる（何か操作した後はページの再読み込みが必要）
 
 ## Prisma Studioについて
 - `npx prisma studio`を実行し`http://localhost:5555/`にアクセスすると，Prisma Studioというツールが使用できる．
