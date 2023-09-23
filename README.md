@@ -10,7 +10,7 @@
 5. `docker compose up -d`を実行し，データベースを起動
 - `compose.yml`という名前のファイルの中でデータベースを定義している（これをコピペすれば他の環境でもDockerでデータベースを起動することができる）
 6. `npm install`で必要なライブラリを導入
-- 今回はデータベースを扱うためPrismaというパッケージを導入している．他の環境では`npm install prisma`を実行する必要がある．
+- 今回はデータベースを扱うためPrismaというパッケージを導入している．他の環境でPrismaを使うには`npm install prisma`を実行する必要がある．
 7. `npx prisma migrate dev`で`prisma/schema.prisma`の内容をデータベースに反映
 - `? Enter a name for the new migration: ›`と聞かれるが，何も入力せずにEnterキーを押してOK．
 - `prisma/schema.prisma`の内容を書き換えた後もう一度実行すると，その変更がデータベースに反映される．
