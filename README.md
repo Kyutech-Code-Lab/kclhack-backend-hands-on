@@ -4,8 +4,8 @@
 1. Docker Desktopをインストール
 - Windowsの場合 https://docs.docker.jp/docker-for-windows/install.html#install-docker-desktop-on-windows
 - Macの場合 https://docs.docker.jp/docker-for-mac/install.html#install-and-run-docker-desktop-on-mac
-2. `git clone https://github.com/claustra01/kclhack-next-server-hands-on`を実行し，レポジトリをクローン
-3. `cd kclhack-next-server-hands-on`を実行し，クローンしてきたディレクトリに移動
+2. `git clone https://github.com/claustra01/kclhack-backend-hands-on`を実行し，レポジトリをクローン
+3. `cd kclhack-backend-hands-on`を実行し，クローンしてきたディレクトリに移動
 4. `.env.sample`という名前のファイルをコピーし，`.env`という名前に変更
 5. `docker compose up -d`を実行し，データベースを起動
 - `compose.yml`という名前のファイルの中でデータベースを定義している（これをコピペすれば他の環境でもDockerでデータベースを起動することができる）
